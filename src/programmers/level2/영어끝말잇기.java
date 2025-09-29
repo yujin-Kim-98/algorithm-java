@@ -26,13 +26,13 @@ public class 영어끝말잇기 {
 class Solution {
     public int[] solution(int n, String[] words) {
         Set<String> wordSet = new HashSet<>(Collections.singletonList(words[0]));
-        char currentLastChar = words[0].charAt(words[0].length() - 1);
+        char prevChar = words[0].charAt(words[0].length() - 1);
 
         for (int i = 1; i < words.length; i++) {
-            if (currentLastChar != words[i].charAt(0) || wordSet.contains(words[i])) {
+            if (prevChar != words[i].charAt(0) || wordSet.contains(words[i])) {
                 return new int[] { (i % n) + 1, (i / n) + 1 };
             }
-            currentLastChar = words[i].charAt(words[i].length() - 1);;
+            prevChar = words[i].charAt(words[i].length() - 1);;
             wordSet.add(words[i]);
         }
 
